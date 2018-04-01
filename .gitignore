@@ -1,0 +1,8 @@
+# Dist
+dist/
+
+#lib
+node_modules
+
+#Test
+coverage
