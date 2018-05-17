@@ -5,10 +5,17 @@ import {createElement, toVnode, viewToVnode, setElementProp} from "../utils/inde
  * @param {Object} init 
  */
 function start(init) {
-  if (!init.viewVNode) return;
-  let _viewVNode = init.viewVNode;
-  let _container = init.container ? init.container : document.body;
-  _container.appendChild(createElement(_viewVNode));
+  const {
+    view,
+    container = document.body,
+    state,
+    actions
+  } = init
+  if (typeof view === 'undefined') return;
+
+  typeof view === 'string'
+    ? container.innerHTML = view
+    : container.appendChild(createElement(view))
 }
 
 export {

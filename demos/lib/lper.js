@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.superapp = {})));
+	(factory((global.lper = {})));
 }(this, (function (exports) { 'use strict';
 
 /**
@@ -95,10 +95,17 @@ function viewToVnode(name = '', props = {}) {
  * @param {Object} init 
  */
 function start(init) {
-  if (!init.viewVNode) return;
-  let _viewVNode = init.viewVNode;
-  let _container = init.container ? init.container : document.body;
-  _container.appendChild(createElement(_viewVNode));
+  const {
+    view,
+    container = document.body,
+    state,
+    actions
+  } = init;
+  if (typeof view === 'undefined') return;
+
+  typeof view === 'string'
+    ? container.innerHTML = view
+    : container.appendChild(createElement(view));
 }
 
 exports.start = start;
@@ -107,4 +114,4 @@ exports.viewToVnode = viewToVnode;
 Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=superapp.js.map
+//# sourceMappingURL=lper.js.map

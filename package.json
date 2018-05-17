@@ -1,10 +1,10 @@
 {
-  "name": "superapp",
+  "name": "lper",
   "version": "0.1.0",
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://git.coding.net/lipengpeng/superapp.git"
+    "url": "https://github.com/lppking/Lper.git"
   },
   "author": "lipengpeng",
   "babel": {
@@ -13,8 +13,8 @@
   "scripts": {
     "test": "jest --coverage --no-cache",
     "build": "npm run bundle && npm run minify",
-    "bundle": "rollup -i src/index.js -o dist/superapp.js -m -f umd -n superapp",
-    "minify": "uglifyjs dist/superapp.js -o dist/superapp.min.js -mc pure_funcs=Object.defineProperty --source-map includeSources,url=superapp.js.map"
+    "bundle": "rollup -i src/index.js -o dist/lper.js -m -f umd -n lper",
+    "minify": "uglifyjs dist/lper.js -o dist/lper.min.js -mc pure_funcs=Object.defineProperty --source-map includeSources,url=lper.js.map"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",

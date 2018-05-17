@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="./lib/lper.js"></script>
+</body>
+<script>
+    const container = document.getElementById("container");
+    const actions = {
+      handleUp: () => {
+        state.count ++
+        console.log(state)
+      },
+      handleDown: () => {
+        state.count --
+        console.log(state)
+      }
+    }
+    const state = {
+      count: 1
+    }
+    const view = (
+      `<div>
+        ${state.count}
+      </div>
+      <div>
+        <button onClick="actions.handleUp()">增加</button>
+        <button onClick="actions.handleDown()">减少</button>
+      </div>`
+    )
+    lper.start({
+      view,
+      container,
+      state,
+      actions
+    });
+  </script>
+</html>

@@ -8,15 +8,14 @@
 </head>
 <body>
   <div id="container"></div>
-
-  <script src="./lib/superapp-v0.1.0.min.js"></script>
+  <script src="./lib/lper.js"></script>
 </body>
 <script>
-    var container = document.getElementById("container");
-    var viewVNode = superapp.viewToVnode("div", {
-      id: "superapp"
+    const container = document.getElementById("container");
+    const viewVNode = lper.viewToVnode("div", {
+      id: "lper"
     }, ["child"]);
-    superapp.start({
+    lper.start({
       viewVNode,
       container
     });
