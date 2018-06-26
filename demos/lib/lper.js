@@ -67,21 +67,22 @@ function createElement(node) {
  *           element.nodeValue
  */
 
-function viewToVnode(name = '', props = {}) {
-  let _argsArray = Array.prototype.slice.call(arguments);
-  let _argLength = _argsArray.length;
-  let children = [];
-  if (_argLength - 2 > 0) {
-    for (let i = 2; i < _argLength; i++) {
-      if (Array.isArray(_argsArray[i])) {
-        _argsArray[i].forEach(item => {
+function viewToVnode(name = '', props = {}, ...args) {
+  const _allArgs = Array.prototype.slice.call(arguments);
+  const argsLength = args.length;
+  const _childsLen = _allArgs.length - argsLength;
+  const children = [];
+  if (_childsLen > 0) {
+    for (let i = _childsLen; i < argsLength; i++) {
+      if (Array.isArray(args[i])) {
+        args[i].forEach(item => {
           if (item !== null && typeof item !== "boolean") {
             children.push(item);
           }
         });
       } else {
-        if (_argsArray[i] !== null && typeof _argsArray[i] !== "boolean") {
-          children.push(_argsArray[i]);
+        if (args[i] !== null && typeof args[i] !== "boolean") {
+          children.push(args[i]);
         }
       }
     }
@@ -97,15 +98,14 @@ function viewToVnode(name = '', props = {}) {
 function start(init) {
   const {
     view,
-    container = document.body,
-    state,
-    actions
+    container = document.body
   } = init;
   if (typeof view === 'undefined') return;
 
-  typeof view === 'string'
-    ? container.innerHTML = view
-    : container.appendChild(createElement(view));
+  const { el = 'div', props } = view;
+  const _eleTree = viewToVnode(el, props);
+
+  container.appendChild(createElement(_eleTree));
 }
 
 exports.start = start;

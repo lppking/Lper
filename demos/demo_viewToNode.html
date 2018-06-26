@@ -12,11 +12,17 @@
 </body>
 <script>
     const container = document.getElementById("container");
-    const viewVNode = lper.viewToVnode("div", {
-      id: "lper"
-    }, ["child"]);
+    // const view = lper.viewToVnode("div", {
+    //   id: "lper"
+    // }, ["child"]);
+    const view = {
+      el: "div",
+      props: {
+        id: 'lper'
+      }
+    };
     lper.start({
-      viewVNode,
+      view,
       container
     });
   </script>

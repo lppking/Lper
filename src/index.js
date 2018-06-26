@@ -7,15 +7,14 @@ import {createElement, toVnode, viewToVnode, setElementProp} from "../utils/inde
 function start(init) {
   const {
     view,
-    container = document.body,
-    state,
-    actions
+    container = document.body
   } = init
   if (typeof view === 'undefined') return;
 
-  typeof view === 'string'
-    ? container.innerHTML = view
-    : container.appendChild(createElement(view))
+  const { el = 'div', props } = view;
+  const _eleTree = viewToVnode(el, props);
+
+  container.appendChild(createElement(_eleTree))
 }
 
 export {
